@@ -1,5 +1,3 @@
-import os
-
 import pytest
 from grandpy import create_app
 

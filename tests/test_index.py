@@ -1,6 +1,7 @@
 import pytest
 
-def test_index_return(client):
+
+def test_index(client):
     response = client.get('/')
-    print(response.data)
-    assert b"Hello" in response.data
+    assert b"<title>GrandPy Bot</title>" in response.data
+
