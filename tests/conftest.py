@@ -1,5 +1,4 @@
 import pytest
-import json
 
 from grandpy import create_app
 
@@ -49,12 +48,10 @@ def questions():
         5: {"question": "Le stade de France, tu connais ?",
             "words": ["le", "stade", "de", "france", "tu", "connais"],
             "keywords": ["stade", "france"]
+            },
+        6: {"question": "Connaissez-vous l'adresse du Monoprix de Villeurbanne ?",
+            "words": ["connaissez", "vous", "l", "adresse", "du",
+                      "monoprix", "de", "villeurbanne"],
+            "keywords": ["monoprix", "villeurbanne"]
             }
     }
-
-
-@pytest.fixture
-def base_stop():
-    with open('grandpy/words-base.json', encoding='utf-8') as f:
-        words = json.load(f)
-    return words
