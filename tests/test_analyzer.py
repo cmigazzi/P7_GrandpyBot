@@ -18,35 +18,14 @@ def test_is_question(questions):
     assert p_2.is_question() is True
 
 
-def test_get_words(questions):
+def test_words(questions):
     for question in questions.values():
         p = QuestionAnalyzer(question["question"])
-        p.get_words()
-        assert p.words == question["words"]
+        p.set_words()
+        assert p.get_words() == question["words"]
 
 
-def test_get_type(questions):
-    p0 = QuestionAnalyzer(questions[0]["question"])
-    p1 = QuestionAnalyzer(questions[1]["question"])
-    p2 = QuestionAnalyzer(questions[2]["question"])
-    p3 = QuestionAnalyzer(questions[3]["question"])
-    p4 = QuestionAnalyzer(questions[4]["question"])
-    p5 = QuestionAnalyzer(questions[5]["question"])
-    p0.get_type()
-    p1.get_type()
-    p2.get_type()
-    p3.get_type()
-    p4.get_type()
-    p5.get_type()
-    assert p0.type == QuestionType.STANDARD
-    assert p1.type == QuestionType.FORMAL
-    assert p2.type == QuestionType.COLLOQUIAL
-    assert p3.type == QuestionType.W_WORD
-    assert p4.type == QuestionType.W_WORD
-    assert p5.type == QuestionType.KEYWORDS_FIRST
-
-
-def test_get_pronoun(questions):
+def test_type(questions):
     p0 = QuestionAnalyzer(questions[0]["question"])
     p1 = QuestionAnalyzer(questions[1]["question"])
     p2 = QuestionAnalyzer(questions[2]["question"])
@@ -54,37 +33,67 @@ def test_get_pronoun(questions):
     p4 = QuestionAnalyzer(questions[4]["question"])
     p5 = QuestionAnalyzer(questions[5]["question"])
     p6 = QuestionAnalyzer(questions[6]["question"])
-    p0.get_pronoun()
-    p1.get_pronoun()
-    p2.get_pronoun()
-    p3.get_pronoun()
-    p4.get_pronoun()
-    p5.get_pronoun()
-    p6.get_pronoun()
-    assert p0.pronoun == "tu"
-    assert p1.pronoun == "tu"
-    assert p2.pronoun == "tu"
-    assert p3.pronoun is None
-    assert p4.pronoun is None
-    assert p5.pronoun == "tu"
-    assert p6.pronoun == "vous"
-# def test_split(questions):
-#     for question in questions.values():
-#         assert Parser(question["question"]).words == question["words"]
+    p7 = QuestionAnalyzer(questions[7]["question"])
+
+    assert p0.get_type() == QuestionType.STANDARD
+    assert p1.get_type() == QuestionType.FORMAL
+    assert p2.get_type() == QuestionType.COLLOQUIAL
+    assert p3.get_type() == QuestionType.W_WORD
+    assert p4.get_type() == QuestionType.W_WORD
+    assert p5.get_type() == QuestionType.KEYWORDS_FIRST
+    assert p6.get_type() == QuestionType.FORMAL
+    assert p7.get_type() == QuestionType.FORMAL
 
 
-# def test_clean(questions, base_stop):
-#     for question in questions.values():
-#         parser = Parser(question["question"])
-#         words = parser.words
-#         result = [w for w in words if w not in base_stop]
-#         parser.clean()
-#         assert parser.words == result
+def test_set_pronoun(questions):
+    p0 = QuestionAnalyzer(questions[0]["question"])
+    p1 = QuestionAnalyzer(questions[1]["question"])
+    p2 = QuestionAnalyzer(questions[2]["question"])
+    p3 = QuestionAnalyzer(questions[3]["question"])
+    p4 = QuestionAnalyzer(questions[4]["question"])
+    p5 = QuestionAnalyzer(questions[5]["question"])
+    p6 = QuestionAnalyzer(questions[6]["question"])
+    p7 = QuestionAnalyzer(questions[7]["question"])
+
+    assert p0.get_pronoun() == "tu"
+    assert p1.get_pronoun() == "tu"
+    assert p2.get_pronoun() == "tu"
+    assert p3.get_pronoun() is None
+    assert p4.get_pronoun() is None
+    assert p5.get_pronoun() == "tu"
+    assert p6.get_pronoun() == "vous"
+    assert p7.get_pronoun() == "tu"
 
 
-# def test_keywords(questions):
-#     for question in questions.values():
-#         parser = Parser(question["question"])
-#         parser.clean()
-#         parser.get_keywords()
-#         assert parser.keywords == question["keywords"]
+def test_get_keywords(questions):
+    p0 = QuestionAnalyzer(questions[0]["question"])
+    kw_0 = p0.get_keywords()
+    assert kw_0 == questions[0]["keywords"]
+
+    p1 = QuestionAnalyzer(questions[1]["question"])
+    kw_1 = p1.get_keywords()
+    assert kw_1 == questions[1]["keywords"]
+
+    p2 = QuestionAnalyzer(questions[2]["question"])
+    kw_2 = p2.get_keywords()
+    assert kw_2 == questions[2]["keywords"]
+
+    p3 = QuestionAnalyzer(questions[3]["question"])
+    kw_3 = p3.get_keywords()
+    assert kw_3 == questions[3]["keywords"]
+
+    p4 = QuestionAnalyzer(questions[4]["question"])
+    kw_4 = p4.get_keywords()
+    assert kw_4 == questions[4]["keywords"]
+
+    p5 = QuestionAnalyzer(questions[5]["question"])
+    kw_5 = p5.get_keywords()
+    assert kw_5 == questions[5]["keywords"]
+
+    p6 = QuestionAnalyzer(questions[6]["question"])
+    kw_6 = p6.get_keywords()
+    assert kw_6 == questions[6]["keywords"]
+
+    p7 = QuestionAnalyzer(questions[7]["question"])
+    kw_7 = p7.get_keywords()
+    assert kw_7 == questions[7]["keywords"]

@@ -53,5 +53,10 @@ def questions():
             "words": ["connaissez", "vous", "l", "adresse", "du",
                       "monoprix", "de", "villeurbanne"],
             "keywords": ["monoprix", "villeurbanne"]
+            },
+        7: {"question": "Peux-tu me dire où se trouve la gare Saint-Paul ?",
+            "words": ["peux", "tu", "me", "dire", "où", "se", "trouve", "la",
+                      "gare", "saint", "paul"],
+            "keywords": ["gare", "saint", "paul"]
             }
     }
