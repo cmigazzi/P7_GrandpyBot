@@ -1,4 +1,6 @@
 import pytest
+import googlemaps
+from mediawiki import MediaWiki
 
 from grandpy import create_app
 
@@ -49,7 +51,8 @@ def questions():
             "words": ["le", "stade", "de", "france", "tu", "connais"],
             "keywords": ["stade", "france"]
             },
-        6: {"question": "Connaissez-vous l'adresse du Monoprix de Villeurbanne ?",
+        6: {"question": ("Connaissez-vous l'adresse du Monoprix "
+                         "de Villeurbanne ?"),
             "words": ["connaissez", "vous", "l", "adresse", "du",
                       "monoprix", "de", "villeurbanne"],
             "keywords": ["monoprix", "villeurbanne"]
@@ -60,3 +63,30 @@ def questions():
             "keywords": ["gare", "saint", "paul"]
             }
     }
+
+
+@pytest.fixture(autouse=True)
+def google_api_call(monkeypatch):
+    def mock_init(*args, **kwargs):
+        pass
+    monkeypatch.setattr(googlemaps.Client, "__init__", mock_init)
+
+    def mock_geocode(*args, **kwargs):
+        return [{"geometry":
+                {"location": {'lat': 48.9244592, 'lng': 2.3601645}}
+                 }]
+    monkeypatch.setattr(googlemaps.Client, "geocode", mock_geocode)
+
+
+@pytest.fixture(autouse=True)
+def medaiwiki_api_call(monkeypatch):
+    def mock_init(*args, **kwargs):
+        pass
+    monkeypatch.setattr(MediaWiki, "__init__", mock_init)
+
+    def mock_geosearch(*args, **kwargs):
+        return ['Stade de France',
+                'Saint-Denis – Porte de Paris (Paris Métro)',
+                'Lycée Suger', 'La Plaine–Stade de France station']
+
+    monkeypatch.setattr(MediaWiki, "geosearch", mock_geosearch)

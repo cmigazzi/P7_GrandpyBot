@@ -9,6 +9,8 @@ flake8 = "*"
 
 [packages]
 flask = "*"
+googlemaps = "*"
+pymediawiki = "*"
 
 [requires]
 python_version = "3.7"

@@ -13,7 +13,7 @@ class QuestionAnalyzer():
         self._pronoun = self.set_pronoun()
 
     def set_words(self):
-        words = list(filter(None, re.split("\W+", self.question)))
+        words = list(filter(None, re.split(r"\W+", self.question)))
         return words
 
     def get_words(self):
@@ -68,9 +68,12 @@ class QuestionAnalyzer():
             target_keywords = words[3:]
         elif q_type == QuestionType.KEYWORDS_FIRST:
             target_keywords = words[:5]
-        elif (q_type == QuestionType.FORMAL
-                and re.match(words[0], "^p[eo]u\w{0-2}[xtz]$")):
-            target_keywords = words[6:]
+        elif q_type == QuestionType.FORMAL:
+            for word in words:
+                if word in W_WORDS:
+                    w_word_id = words.index(word)
+                    target_keywords = words[w_word_id+3:]
+                    break
         else:
             target_keywords = words[5:]
 
@@ -78,3 +81,6 @@ class QuestionAnalyzer():
                     if len(w) > 1 and w not in STOP_WORDS]
 
         return keywords
+
+
+# re.match(words[0], r"^p[eo]u\w{0-2}[xtz]$")

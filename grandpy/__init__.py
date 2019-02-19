@@ -2,6 +2,9 @@ import os
 
 from flask import Flask
 
+# Get environment variables
+G_API_KEY = os.environ.get("G_API_KEY")
+
 
 def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
@@ -13,6 +16,7 @@ def create_app(test_config=None):
         app.config.from_pyfile('config.py', silent=True)
     else:
         app.config.from_mapping(test_config)
+        print(G_API_KEY)
 
     # ensure the instance folder exists
     try:
