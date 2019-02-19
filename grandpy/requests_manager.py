@@ -10,6 +10,7 @@ class RequestsManager():
 
     def __init__(self, question):
         self.question = QuestionAnalyzer(question)
+        self.wiki = MediaWiki(lang="fr", user_agent="GrandpyBot/OpenClassrooms")
         self._geocode = self.set_geocode()
         self._articles = self.set_articles()
 
@@ -24,11 +25,20 @@ class RequestsManager():
 
         return geocode
 
+    def get_geocode(self):
+        return self._geocode
+
     def set_articles(self):
-        params = {"lang": "fr", "user-agent": "GrandpyBot/OpenClassrooms"}
-        wikipedia = MediaWiki(**params)
-        latitude = self._geocode["lat"]
-        longitude = self._geocode["lng"]
-        articles = wikipedia.geosearch(latitude=latitude, longitude=longitude)
+        latitude = self.get_geocode()["lat"]
+        longitude = self.get_geocode()["lng"]
+        articles = self.wiki.geosearch(latitude=latitude, longitude=longitude)
 
         return articles
+
+    def get_articles(self):
+        return self._articles
+
+    def get_summary(self):
+        title = self.get_articles()[0]
+        summary = self.wiki.summary(title)
+        return summary

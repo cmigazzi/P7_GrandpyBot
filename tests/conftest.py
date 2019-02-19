@@ -88,5 +88,12 @@ def medaiwiki_api_call(monkeypatch):
         return ['Stade de France',
                 'Saint-Denis – Porte de Paris (Paris Métro)',
                 'Lycée Suger', 'La Plaine–Stade de France station']
-
     monkeypatch.setattr(MediaWiki, "geosearch", mock_geosearch)
+
+    def mock_summary(*args, **kwargs):
+        return ("Le Stade de France est le plus grand stade de football "
+                "français avec 80 698 places en configuration "
+                "football/rugby. Il se situe dans le quartier de la "
+                "Plaine Saint-Denis à Saint-Denis, dans la proche "
+                "banlieue nord de Paris.")
+    monkeypatch.setattr(MediaWiki, "summary", mock_summary)
