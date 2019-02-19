@@ -10,7 +10,8 @@ class RequestsManager():
 
     def __init__(self, question):
         self.question = QuestionAnalyzer(question)
-        self.wiki = MediaWiki(lang="fr", user_agent="GrandpyBot/OpenClassrooms")
+        self.wiki = MediaWiki(lang="fr",
+                              user_agent="GrandpyBot/OpenClassrooms")
         self._geocode = self.set_geocode()
         self._articles = self.set_articles()
 
