@@ -5,26 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>GrandPy Bot</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
-    <script src="main.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='style.css' )}}">
 </head>
 <body>
     <header>
             <h1>Bienvenue sur Grandpy Bot</h1>
             <p>Le bot qui vous raconte l'histoire des endroits où vous allez.</p>
     </header>
-    <div>
-        <p>Je suis Grandpy, pose moi une question !</p>
-    </div>
-    <form action="">
-        <input type="text" id="question" value="Pose ta question ici...">
-        <input type="submit" value="Alors ?">
-    </form>
+    <div id="main">
+    {% block main %}{% endblock %}
+    </div>  
     <footer>
         <div>
             <span>Cédric Migazzi</span>
             <span>GitHub link</span>
         </div>
-    </footer>    
+    </footer> 
+    <script src="{{ url_for('static', filename='main.js' )}}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ g_api_key }}"></script>
+   
 </body>
 </html>

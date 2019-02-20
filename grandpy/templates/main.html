@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div id="messages">
+    <div class="grandpy">
+        <p>{{ welcome }}</p>
+    </div>
+    <div id="end"></div>
+</div>
+<form>
+    <input type="text" id="question" value="Pose ta question ici...">
+    <input type="submit" value="Alors ?">
+</form>
+{% endblock %}

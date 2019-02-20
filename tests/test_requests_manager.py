@@ -1,5 +1,3 @@
-
-
 from grandpy.requests_manager import RequestsManager
 from grandpy.parser.analyzer import QuestionAnalyzer
 
