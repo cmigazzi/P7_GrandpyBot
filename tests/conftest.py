@@ -73,7 +73,8 @@ def google_api_call(monkeypatch):
 
     def mock_geocode(*args, **kwargs):
         return [{"geometry":
-                {"location": {'lat': 48.9244592, 'lng': 2.3601645}}
+                {"location": {'lat': 48.9244592, 'lng': 2.3601645}},
+                "formatted_address": "Stade de France, 93200 Saint-Denis"
                  }]
     monkeypatch.setattr(googlemaps.Client, "geocode", mock_geocode)
 

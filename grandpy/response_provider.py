@@ -6,14 +6,24 @@ from .responses import RESPONSES
 
 class ResponseProvider():
 
+    def __init__(self, exception=None):
+        if exception is not None:
+            self.exception = exception.name
+        else:
+            self.exception = None
+
+    def provider(self):
+        if self.exception == "Invalid Question":
+            self.no_interrogation_mark()
+        elif self.exception == None:
+            self.welcome()
+        return self.response
+
     def welcome(self):
         welcome = random.choice(RESPONSES["welcome"])
-        return welcome
-    
-    def misunderstood(self):
-        misunderstood = random.choice(RESPONSES["misunderstood"])
-        return misunderstood
+        self.response = welcome
 
-    def understood(self):
-        understood = random.choice(RESPONSES["understood"])
-        return understood
+    def no_interrogation_mark(self):
+        no_interrogation_mark = random.choice(RESPONSES["interrogation_mark"])
+        self.response = no_interrogation_mark
+

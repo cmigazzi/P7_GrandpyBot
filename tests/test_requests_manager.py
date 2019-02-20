@@ -16,13 +16,17 @@ def test_analyze(questions):
 def test_get_geocodes():
     question = "Ou se trouve le Stade de France ?"
     rm = RequestsManager(question)
-    assert rm._geocode == {'lat': 48.9244592, 'lng': 2.3601645}
+    assert rm.get_geocode() == {'lat': 48.9244592, 'lng': 2.3601645}
 
+def test_get_adress():
+    question = "Ou se trouve le Stade de France ?"
+    rm = RequestsManager(question)
+    assert rm.get_adress() == "Stade de France, 93200 Saint-Denis"
 
 def test_wikimedia():
     question = "Ou se trouve le Stade de France ?"
     rm = RequestsManager(question)
-    assert rm._articles == ['Stade de France',
+    assert rm.get_articles() == ['Stade de France',
                             'Saint-Denis – Porte de Paris (Paris Métro)',
                             'Lycée Suger', 'La Plaine–Stade de France station']
 

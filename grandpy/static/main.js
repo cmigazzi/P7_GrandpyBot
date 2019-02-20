@@ -2,6 +2,7 @@
 var xhttp = new XMLHttpRequest();
 var mapId = 0
 
+
 // display loader
 function loader(divId, state) {
     var loaderDiv = document.getElementById(divId)
@@ -49,9 +50,9 @@ function displayWiki(summary) {
 }
 
 // Display user message
-function userMessage(response) {
+function message(response, className) {
     var newDiv = document.createElement("div")
-    newDiv.className = "user"
+    newDiv.className = className
     var node = document.createTextNode(response)
     newDiv.appendChild(node)
 
@@ -82,20 +83,25 @@ window.onload = function () {
             }
             if (this.readyState == 4 && this.status == 200) {
                 res = JSON.parse(this.response)
-                geocodes = res.geocodes
-                summary = res.summary
-                displayMap(geocodes)
-                displayWiki(summary)
-                loader("end", false)
-                
-          
-            }
+                if (res.is_valid == false) {
+                    message(res.message, "grandpy");
+                    loader("end", false);                    
+                } else {
+                    message(res.adress, "grandpy");
+                    displayMap(res.geocodes);
+                    message(res.transition, "grandpy");
+                    setTimeout(function() {
+                    displayWiki(res.summary)
+                    loader("end", false)
+                    } , 2000);     
+                }                     
+              }
         }
 
         xhttp.open('POST', '/')
         xhttp.setRequestHeader("Content-type", "application/json")
         xhttp.send(question)
-        userMessage(questionElt.value)
+        message(questionElt.value, "user")
         form.reset()
         e.preventDefault();
     });

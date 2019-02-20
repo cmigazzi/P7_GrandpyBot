@@ -2,7 +2,7 @@ import re
 
 from .question_type import QuestionType
 from .words_base import PRONOUNS, W_WORDS, STOP_WORDS
-
+from .exceptions import InvalidQuestionException
 
 class QuestionAnalyzer():
 
@@ -11,6 +11,7 @@ class QuestionAnalyzer():
         self._words = self.set_words()
         self._type = self.set_type()
         self._pronoun = self.set_pronoun()
+
 
     def set_words(self):
         words = list(filter(None, re.split(r"\W+", self.question)))
@@ -49,12 +50,6 @@ class QuestionAnalyzer():
 
     def get_pronoun(self):
         return self._pronoun
-
-    def is_question(self):
-        if self.question[-1] == "?":
-            return True
-        else:
-            return False
 
     def get_keywords(self):
         q_type = self.get_type()

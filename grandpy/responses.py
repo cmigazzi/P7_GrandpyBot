@@ -10,9 +10,9 @@ RESPONSES = {
         "Peux-tu reformuler ta phrase, je ne comprends pas",
         "Je suis confu, je ne comprends pas"
     ],
-    "understood": [
-        "Bien sûr, je vais chercher ça...",
-        "Ne bouge pas, voilà la réponse",
-        "Laisse moi réflchir..."
-    ]
+    "interrogation_mark": [
+        "Est-ce vraiment une question ?",
+        "Il manque un '?'",
+        "Malheuresement, le ton n'y est pas."
+    ],
 }

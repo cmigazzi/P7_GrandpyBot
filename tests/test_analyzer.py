@@ -1,21 +1,14 @@
+import pytest
+
 from grandpy.parser.analyzer import QuestionAnalyzer
 from grandpy.parser.question_type import QuestionType
+from grandpy.parser.exceptions import InvalidQuestionException
 
 
 def test_class(questions):
     for question in questions.values():
         p = QuestionAnalyzer(question["question"])
         assert p
-
-
-def test_is_question(questions):
-    for question in questions.values():
-        p = QuestionAnalyzer(question["question"])
-        assert p.is_question() is True
-    p_1 = QuestionAnalyzer("Tu connais le musée d'Orsay")
-    p_2 = QuestionAnalyzer("Tu connais le musée d'Orsay ? ")
-    assert p_1.is_question() is False
-    assert p_2.is_question() is True
 
 
 def test_words(questions):
