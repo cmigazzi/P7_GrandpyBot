@@ -2,7 +2,7 @@ import re
 
 from .question_type import QuestionType
 from .words_base import PRONOUNS, W_WORDS, STOP_WORDS
-from .exceptions import InvalidQuestionException
+
 
 class QuestionAnalyzer():
 
@@ -12,8 +12,10 @@ class QuestionAnalyzer():
         self._type = self.set_type()
         self._pronoun = self.set_pronoun()
 
-
     def set_words(self):
+        if re.search(r"(\.|!)", self.question):
+            questions = re.split(r"(\.|!)", self.question)
+            self.question = questions[-1]
         words = list(filter(None, re.split(r"\W+", self.question)))
         return words
 
@@ -22,14 +24,15 @@ class QuestionAnalyzer():
 
     def set_type(self):
         words = self.get_words()
-        if ["est", "ce", "que"] == words[0:3]:
+        if re.search(r"est(-|\s)ce que", self.question):
             q_type = QuestionType.STANDARD
-        elif words[0] in W_WORDS:
-            q_type = QuestionType.W_WORD
         elif words[0] in PRONOUNS:
             q_type = QuestionType.COLLOQUIAL
         elif words[1] in PRONOUNS:
             q_type = QuestionType.FORMAL
+        elif words[0] in W_WORDS or [w for w in words
+                                     if re.match(r"o(u|ù)", w)]:
+            q_type = QuestionType.W_WORD
         else:
             q_type = QuestionType.KEYWORDS_FIRST
         return q_type

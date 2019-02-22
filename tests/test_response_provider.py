@@ -1,7 +1,8 @@
 
 from grandpy.response_provider import ResponseProvider
 from grandpy.responses import RESPONSES
-from grandpy.parser.exceptions import InvalidQuestionException, NoSpacesException
+from grandpy.parser.exceptions import (InvalidQuestionException,
+                                       NoSpacesException)
 
 
 def test_class_exists():
@@ -10,7 +11,7 @@ def test_class_exists():
 
 
 def test_welcome():
-    rp = ResponseProvider()    
+    rp = ResponseProvider()
     assert rp.provider() in RESPONSES["welcome"]
 
 
@@ -27,3 +28,8 @@ def test_provider():
 def test_interrogation_mark():
     rp = ResponseProvider(InvalidQuestionException())
     assert rp.provider() in RESPONSES["interrogation_mark"]
+
+
+def test_spaces():
+    rp = ResponseProvider(NoSpacesException())
+    assert rp.provider() in RESPONSES["no_spaces"]

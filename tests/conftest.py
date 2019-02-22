@@ -61,7 +61,25 @@ def questions():
             "words": ["peux", "tu", "me", "dire", "où", "se", "trouve", "la",
                       "gare", "saint", "paul"],
             "keywords": ["gare", "saint", "paul"]
-            }
+            },
+        8: {"question": ("Salut GrandPy ! Est-ce que tu connais l'adresse "
+                         "d'OpenClassrooms ?"),
+            "words": ["est", "ce", "que", "tu", "connais",
+                      "l", "adresse", "d", "openclassrooms"],
+            "keywords": ["openclassrooms"]
+            },
+        9: {"question": ("Hey Grandpy! La place Bellecour, "
+                         "ca te dit quelque chose ?"),
+            "words": ["la", "place", "bellecour", "ca", 
+                      "te", "dit", "quelque", "chose"],
+            "keywords": ["place", "bellecour"]
+            },
+        10: {"question": "Hey, ou se trouve la place Bellecour ?",
+             "words": ["hey", "ou", "se", "trouve",
+                       "la", "place", "bellecour"],
+             "keywords": ["place", "bellecour"]
+             }
+
     }
 
 

@@ -13,6 +13,16 @@ RESPONSES = {
     "interrogation_mark": [
         "Est-ce vraiment une question ?",
         "Il manque un '?'",
-        "Malheuresement, le ton n'y est pas."
+        "Malheuresement, le ton n'y est pas. Est-ce une question ?"
+    ],
+    "no_spaces": [
+        "Une question sans espace ?",
+        "Jenairiencompris...",
+        "Hmm, je ne peux pas décrytper"
+    ],
+    "not_geographic": [
+        "Malheuresement je ne peux pas répondre.",
+        "Je peux simplement répondre à des questions géographiques",
+        "Je ne sais pas"
     ],
 }
