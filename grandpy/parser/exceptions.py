@@ -21,3 +21,9 @@ class NotEnoughWordsException(Exception):
 
     def __init__(self):
         self.name = "Not enough words"
+
+
+class ZeroResultException(Exception):
+
+    def __init__(self):
+        self.name = "Zero result"

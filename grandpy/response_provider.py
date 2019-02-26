@@ -19,6 +19,8 @@ class ResponseProvider():
             self.no_spaces()
         elif self.exception == "Not geographic":
             self.not_geographic()
+        elif self.exception == "Zero result":
+            self.zero_result()
         elif self.exception is None:
             self.welcome()
         return self.response
@@ -38,3 +40,7 @@ class ResponseProvider():
     def not_geographic(self):
         not_geographic = random.choice(RESPONSES["not_geographic"])
         self.response = not_geographic
+
+    def zero_result(self):
+        zero_result = random.choice(RESPONSES["zero_result"])
+        self.response = zero_result

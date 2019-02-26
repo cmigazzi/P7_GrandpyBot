@@ -32,4 +32,10 @@ def test_not_geographic_post(client):
     response = client.post('/', data=json_data,
                            content_type="application/json")
     assert b"\"is_valid\": false, \"message\":" in response.data
-   
+
+
+def test_zero_result(client, zero_result_google_api_call):
+    json_data = json.dumps({"question": "Ou se trouve lkjq ?"})
+    response = client.post('/', data=json_data,
+                           content_type="application/json")
+    assert b"\"is_valid\": false, \"message\":" in response.data

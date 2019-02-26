@@ -4,6 +4,7 @@ import googlemaps
 from mediawiki import MediaWiki
 
 from .parser.analyzer import QuestionAnalyzer
+from .parser.exceptions import ZeroResultException
 
 
 class RequestsManager():
@@ -20,6 +21,9 @@ class RequestsManager():
         keywords = ",".join(self.question.get_keywords())
 
         results = self.gmaps.geocode(keywords, region="fr")
+
+        if results == []:
+            raise ZeroResultException
 
         geocode = results[0]["geometry"]["location"]
         adress = results[0]["formatted_address"]

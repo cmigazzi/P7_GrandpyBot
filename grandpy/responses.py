@@ -25,4 +25,9 @@ RESPONSES = {
         "Je peux simplement répondre à des questions géographiques",
         "Je ne sais pas"
     ],
+    "zero_result": [
+        "Malheuresement je ne connais pas cet endroit.",
+        "Hmmm, je sui confus, je ne sais pas",
+        "Toutes mes excuse, je ne connais pas ce lieu."
+    ],
 }

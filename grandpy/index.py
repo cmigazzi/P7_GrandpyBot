@@ -6,7 +6,7 @@ from flask import Blueprint, render_template, request
 from .response_provider import ResponseProvider
 from .requests_manager import RequestsManager
 from .parser.exceptions import (InvalidQuestionException, NoSpacesException,
-                                NotGeographicException)
+                                NotGeographicException, ZeroResultException)
 from .parser.validator import QuestionValidator
 
 
@@ -22,17 +22,18 @@ def index():
             qv.spaces()
             qv.interrogation_mark()
             qv.geographic()
+            rm = RequestsManager(question)
         except (InvalidQuestionException, NoSpacesException,
-                NotGeographicException) as e:
+                NotGeographicException, ZeroResultException) as e:
             rp = ResponseProvider(e)
             message = rp.provider()
             response = {"is_valid": False,
                         "message": message}
         else:
-            rm = RequestsManager(question)
             geocodes = rm.get_geocode()
             adress = rm.get_adress()
             summary = rm.get_summary()
+
             response = {"is_valid": True,
                         "geocodes":
                         {"lat": geocodes["lat"],
@@ -40,7 +41,7 @@ def index():
                          },
                         "adress": f"Et voilà l'adresse: {adress}.",
                         "summary": summary,
-                        "transition": "T'ai-je déjà parlé de ce quartier ?"
+                        "transition": "T'ai-je déjà parlé de cet endroit ?"
                         }
         finally:
             json_response = json.dumps(response)

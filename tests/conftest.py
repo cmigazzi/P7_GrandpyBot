@@ -70,7 +70,7 @@ def questions():
             },
         9: {"question": ("Hey Grandpy! La place Bellecour, "
                          "ca te dit quelque chose ?"),
-            "words": ["la", "place", "bellecour", "ca", 
+            "words": ["la", "place", "bellecour", "ca",
                       "te", "dit", "quelque", "chose"],
             "keywords": ["place", "bellecour"]
             },
@@ -94,6 +94,17 @@ def google_api_call(monkeypatch):
                 {"location": {'lat': 48.9244592, 'lng': 2.3601645}},
                 "formatted_address": "Stade de France, 93200 Saint-Denis"
                  }]
+    monkeypatch.setattr(googlemaps.Client, "geocode", mock_geocode)
+
+
+@pytest.fixture()
+def zero_result_google_api_call(monkeypatch):
+    def mock_init(*args, **kwargs):
+        pass
+    monkeypatch.setattr(googlemaps.Client, "__init__", mock_init)
+
+    def mock_geocode(*args, **kwargs):
+        return []
     monkeypatch.setattr(googlemaps.Client, "geocode", mock_geocode)
 
 
