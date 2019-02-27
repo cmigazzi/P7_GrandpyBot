@@ -1,20 +1,116 @@
+/* General */
+body {
+  font-family: 'Muli', sans-serif;
+}
+/* Header */
+header {
+  display: flex;
+  background-color: #A3EC44;
+}
+
+#logo {
+  width: 200px;
+  font-size: 50px;
+  padding: 5px;
+}
+
+#welcome {
+  width: 100%;
+  text-align: center;
+}
+
+/* Main, messages and form */
+#main {
+  display: block;
+  box-sizing: border-box;
+  padding: 10px;
+  height: 450px;
+}
+
+#messages {
+  display: block;
+  box-sizing: border-box;
+  margin-left: 20px;
+  margin-right: 20px;
+  height: 400px;
+}
+
+.grandpy, .user, .wiki {
+  box-sizing: border-box;
+  display: block;
+  max-width: 35%;
+  padding: 5px;
+  border-radius: 10px;
+  margin-bottom: 5px;  
+}
+
+.grandpy, .wiki {  
+  background-color: #C7EF93;  
+}
+
+.user {
+  background-color: #FFAD9C; 
+  color: white;
+  margin-left: 10%;
+}
+
+#question {
+  margin-right: 5px;
+}
+
+#question:focus {
+  border-color: #FF694A;
+  box-shadow: 0 0 2px #FFAD9C;
+}
+
+.btn-primary {
+  background-color: #FF694A;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #A3EC44;
+  border: none;
+}
+
+/* Map */
 .map {
+    margin-left: 10%;
+    margin-bottom: 5px;
     height: 250px;
     width: 250px;
   }
 
+/* Loader */
 .loader {
-    border: 2px solid #f3f3f3; /* Light grey */
-    border-top: 2px solid #3498db; /* Blue */
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #89F200;
     border-radius: 50%;
     width: 25px;
     height: 25px;
     animation: spin 1s linear infinite;
+    margin-left: 10%;
   }
-.grandpy {
-    font-weight: bold;
-}
+
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
+
+/* Footer */
+footer {
+  margin-top: 10px;
+  background-color: #E4EBDA;
+  color: #AFA5B2;
+  height: 40px;
+  line-height: 40 px;
+  text-align: center;
+}
+
+i {
+  color:#AFA5B2;
+}
+
+i:hover {
+  color: #FF694A;
+}

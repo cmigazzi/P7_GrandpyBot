@@ -51,6 +51,9 @@ function displayWiki(summary) {
 
 // Display user message
 function message(response, className) {
+    if (className == "grandpy") {
+        response = "👴:" + response        
+    }
     var newDiv = document.createElement("div")
     newDiv.className = className
     var node = document.createTextNode(response)
@@ -58,6 +61,8 @@ function message(response, className) {
 
     var end = document.getElementById("end")
     messages.insertBefore(newDiv, end)
+
+    
 };
 
 

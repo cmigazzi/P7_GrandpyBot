@@ -1,14 +1,16 @@
 {% extends 'base.html' %}
 
 {% block main %}
-<div id="messages">
+<div id="messages" class="overflow-auto">
     <div class="grandpy">
-        <p>{{ welcome }}</p>
+            👴: {{ welcome }}
     </div>
     <div id="end"></div>
 </div>
 <form>
-    <input type="text" id="question" value="Pose ta question ici...">
-    <input type="submit" value="Alors ?">
+    <div class="input-group">
+        <input type="text" id="question" class="form-control" value="Pose ta question ici...">
+        <input class="btn btn-primary" type="submit" value="Alors ?">
+    </div>
 </form>
 {% endblock %}
