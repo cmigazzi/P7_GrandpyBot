@@ -16,7 +16,6 @@ def create_app(test_config=None):
         app.config.from_pyfile('config.py', silent=True)
     else:
         app.config.from_mapping(test_config)
-        print(G_API_KEY)
 
     # ensure the instance folder exists
     try:
