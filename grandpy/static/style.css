@@ -99,6 +99,7 @@ header {
 
 /* Footer */
 footer {
+  display: block;
   margin-top: 10px;
   background-color: #E4EBDA;
   color: #AFA5B2;
@@ -113,4 +114,40 @@ i {
 
 i:hover {
   color: #FF694A;
+}
+
+
+/* Media queries */
+
+/* Medium */
+@media screen and (min-width: 768px) and (max-width: 992) {
+  #logo {
+    font-size: 40px;
+  }
+}
+
+
+/* Small */
+@media (max-width: 767px) {
+  #logo {
+    width: auto;
+    text-align: center;
+    font-size: 30px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  #subtitle {
+    font-size: 0.7rem;
+  }
+
+  #messages {
+    height: 600px;
+  }
+
+  .grandpy, .user, .wiki, .map {
+    max-width: 100%;
+  }
 }
