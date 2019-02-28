@@ -28,6 +28,7 @@ def test_type(questions):
     p8 = QuestionAnalyzer(questions[8]["question"])
     p9 = QuestionAnalyzer(questions[9]["question"])
     p10 = QuestionAnalyzer(questions[10]["question"])
+    p11 = QuestionAnalyzer(questions[11]["question"])
 
     assert p0.get_type() == QuestionType.STANDARD
     assert p1.get_type() == QuestionType.FORMAL
@@ -40,6 +41,7 @@ def test_type(questions):
     assert p8.get_type() == QuestionType.STANDARD
     assert p9.get_type() == QuestionType.KEYWORDS_FIRST
     assert p10.get_type() == QuestionType.W_WORD
+    assert p11.get_type() == QuestionType.KEYWORDS_FIRST
 
 
 def test_set_pronoun(questions):
@@ -54,7 +56,8 @@ def test_set_pronoun(questions):
     p8 = QuestionAnalyzer(questions[8]["question"])
     p9 = QuestionAnalyzer(questions[9]["question"])
     p10 = QuestionAnalyzer(questions[10]["question"])
-    
+    p11 = QuestionAnalyzer(questions[11]["question"])
+
     assert p0.get_pronoun() == "tu"
     assert p1.get_pronoun() == "tu"
     assert p2.get_pronoun() == "tu"
@@ -66,6 +69,7 @@ def test_set_pronoun(questions):
     assert p8.get_pronoun() == "tu"
     assert p9.get_pronoun() is None
     assert p10.get_pronoun() is None
+    assert p11.get_pronoun() is None
 
 
 def test_get_keywords(questions):
@@ -112,3 +116,7 @@ def test_get_keywords(questions):
     p10 = QuestionAnalyzer(questions[10]["question"])
     kw_10 = p10.get_keywords()
     assert kw_10 == questions[10]["keywords"]
+
+    p11 = QuestionAnalyzer(questions[11]["question"])
+    kw_11 = p11.get_keywords()
+    assert kw_11 == questions[11]["keywords"]

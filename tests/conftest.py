@@ -78,7 +78,12 @@ def questions():
              "words": ["hey", "ou", "se", "trouve",
                        "la", "place", "bellecour"],
              "keywords": ["place", "bellecour"]
-             }
+             },
+        11: {"question": "La gare perrache c'est ou ?",
+             "words": ["la", "gare", "perrache", "c",
+                       "est", "ou"],
+             "keywords": ["gare", "perrache"]
+             }    
 
     }
 

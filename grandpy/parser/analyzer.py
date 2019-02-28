@@ -30,7 +30,7 @@ class QuestionAnalyzer():
             q_type = QuestionType.COLLOQUIAL
         elif words[1] in PRONOUNS:
             q_type = QuestionType.FORMAL
-        elif words[0] in W_WORDS or [w for w in words
+        elif words[0] in W_WORDS or [w for w in words[:-2]
                                      if re.match(r"o(u|ù)", w)]:
             q_type = QuestionType.W_WORD
         else:
@@ -67,8 +67,8 @@ class QuestionAnalyzer():
         elif q_type == QuestionType.KEYWORDS_FIRST:
             target_keywords = words[:5]
         elif q_type == QuestionType.FORMAL:
-            for word in words:
-                if word in W_WORDS:
+            for word in words[:-2]:
+                if word in W_WORDS and words.index(word):
                     w_word_id = words.index(word)
                     target_keywords = words[w_word_id+3:]
                     break
