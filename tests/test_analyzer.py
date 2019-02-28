@@ -1,15 +1,18 @@
+"""Contains tests suite for QuestionAnlyzer."""
 
 from grandpy.parser.analyzer import QuestionAnalyzer
 from grandpy.parser.question_type import QuestionType
 
 
 def test_class(questions):
+    """Test if class exist."""
     for question in questions.values():
         p = QuestionAnalyzer(question["question"])
         assert p
 
 
 def test_words(questions):
+    """Test setter and get_words()."""
     for question in questions.values():
         p = QuestionAnalyzer(question["question"])
         p.set_words()
@@ -17,6 +20,7 @@ def test_words(questions):
 
 
 def test_type(questions):
+    """Test setter and get_type()."""
     p0 = QuestionAnalyzer(questions[0]["question"])
     p1 = QuestionAnalyzer(questions[1]["question"])
     p2 = QuestionAnalyzer(questions[2]["question"])
@@ -45,6 +49,7 @@ def test_type(questions):
 
 
 def test_set_pronoun(questions):
+    """Test setter and get_pronouns()."""
     p0 = QuestionAnalyzer(questions[0]["question"])
     p1 = QuestionAnalyzer(questions[1]["question"])
     p2 = QuestionAnalyzer(questions[2]["question"])
@@ -73,6 +78,7 @@ def test_set_pronoun(questions):
 
 
 def test_get_keywords(questions):
+    """Test get_keywords() method."""
     p0 = QuestionAnalyzer(questions[0]["question"])
     kw_0 = p0.get_keywords()
     assert kw_0 == questions[0]["keywords"]

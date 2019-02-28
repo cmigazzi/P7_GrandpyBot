@@ -1,3 +1,5 @@
+"""Contains all the fixtures for the tests."""
+
 import pytest
 import googlemaps
 from mediawiki import MediaWiki
@@ -18,12 +20,13 @@ def app():
 
 @pytest.fixture
 def client(app):
-    """A test client for the app."""
+    """Return test client for the app."""
     return app.test_client()
 
 
 @pytest.fixture
 def questions():
+    """Return tests questions as dict."""
     return {
         0: {"question": "Est-ce que tu connais l'adresse d'openclassrooms ?",
             "words": ["est", "ce", "que", "tu", "connais", "l", "adresse",
@@ -83,13 +86,13 @@ def questions():
              "words": ["la", "gare", "perrache", "c",
                        "est", "ou"],
              "keywords": ["gare", "perrache"]
-             }    
-
+             }
     }
 
 
 @pytest.fixture(autouse=True)
 def google_api_call(monkeypatch):
+    """Patch the Google Maps API call."""
     def mock_init(*args, **kwargs):
         pass
     monkeypatch.setattr(googlemaps.Client, "__init__", mock_init)
@@ -104,6 +107,7 @@ def google_api_call(monkeypatch):
 
 @pytest.fixture()
 def zero_result_google_api_call(monkeypatch):
+    """Patch Google Maps API, when return no result."""
     def mock_init(*args, **kwargs):
         pass
     monkeypatch.setattr(googlemaps.Client, "__init__", mock_init)
@@ -115,6 +119,7 @@ def zero_result_google_api_call(monkeypatch):
 
 @pytest.fixture(autouse=True)
 def medaiwiki_api_call(monkeypatch):
+    """Patch the Wikimedia API call."""
     def mock_init(*args, **kwargs):
         pass
     monkeypatch.setattr(MediaWiki, "__init__", mock_init)

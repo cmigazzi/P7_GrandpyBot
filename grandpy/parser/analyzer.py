@@ -11,7 +11,12 @@ class QuestionAnalyzer():
 
     Methods:
         set_words() -- Split words.
-        get_words() --
+        get_words() -- Return the words.
+        set_type() -- Define the type of the question.
+        get_type() -- Return the type of the question.
+        set_pronoun() -- Define the pronoun of the question.
+        get_pronoun() -- Return the pronoun of the question.
+        get_keywords() -- Select the keywords of the question.
 
     Constructor arguments:
         question {str} -- question to analyze
