@@ -1,2 +1,1 @@
-web: gunicorn grandpy:app
-init: FLASK_APP=grandpy
+web: gunicorn grandpy:create_app()
