@@ -1,3 +1,4 @@
+"""Contains all the reponses for the Response Provider."""
 
 RESPONSES = {
     "welcome": [

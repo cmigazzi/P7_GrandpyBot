@@ -1,3 +1,5 @@
+"""Contains all the stop words, the pronouns and question words."""
+
 STOP_WORDS = [
     "a",
     "abord",

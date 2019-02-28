@@ -1,3 +1,5 @@
+"""Flask application factory."""
+
 import os
 
 from flask import Flask
@@ -7,6 +9,7 @@ G_API_KEY = os.environ.get("G_API_KEY")
 
 
 def create_app(test_config=None):
+    """Is factory function."""
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
         SECRET_KEY='dev'

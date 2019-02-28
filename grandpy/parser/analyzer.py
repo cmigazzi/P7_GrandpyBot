@@ -1,3 +1,5 @@
+"""Contains analyzer for the question send."""
+
 import re
 
 from .question_type import QuestionType
@@ -5,14 +7,31 @@ from .words_base import PRONOUNS, W_WORDS, STOP_WORDS
 
 
 class QuestionAnalyzer():
+    """Represent the analyze engine.
+
+    Methods:
+        set_words() -- Split words.
+        get_words() --
+
+    Constructor arguments:
+        question {str} -- question to analyze
+
+    """
 
     def __init__(self, question):
+        """Please check help(QuestionAnalyzer) for more details."""
         self.question = question.lower().rstrip()
         self._words = self.set_words()
         self._type = self.set_type()
         self._pronoun = self.set_pronoun()
 
     def set_words(self):
+        """Split words.
+
+        Returns:
+            [list] -- words
+
+        """
         if re.search(r"(\.|!)", self.question):
             questions = re.split(r"(\.|!)", self.question)
             self.question = questions[-1]
@@ -20,9 +39,16 @@ class QuestionAnalyzer():
         return words
 
     def get_words(self):
+        """Return the words."""
         return self._words
 
     def set_type(self):
+        """Define the type of the question.
+
+        Returns:
+            [Enum] -- QuestionType
+
+        """
         words = self.get_words()
         if re.search(r"est(-|\s)ce que", self.question):
             q_type = QuestionType.STANDARD
@@ -38,9 +64,16 @@ class QuestionAnalyzer():
         return q_type
 
     def get_type(self):
+        """Return the type of the question."""
         return self._type
 
     def set_pronoun(self):
+        """Define the pronoun of the question.
+
+        Returns:
+            [str] -- pronoun
+
+        """
         words = self.get_words()
         for word in words:
             if word in PRONOUNS:
@@ -52,9 +85,16 @@ class QuestionAnalyzer():
         return pronoun
 
     def get_pronoun(self):
+        """Return the pronoun of the question."""
         return self._pronoun
 
     def get_keywords(self):
+        """Select the keywords of the question.
+
+        Returns:
+            [list] -- selected keywords
+
+        """
         q_type = self.get_type()
         words = self.get_words()
 
@@ -79,6 +119,3 @@ class QuestionAnalyzer():
                     if len(w) > 1 and w not in STOP_WORDS]
 
         return keywords
-
-
-# re.match(words[0], r"^p[eo]u\w{0-2}[xtz]$")

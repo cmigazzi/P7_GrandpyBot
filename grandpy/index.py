@@ -1,3 +1,5 @@
+"""Contains the index routes."""
+
 import os
 import json
 
@@ -15,6 +17,13 @@ bp = Blueprint('index', __name__, url_prefix='/')
 
 @bp.route('/', methods=['GET', 'POST'])
 def index():
+    """Manage request for '/' url.
+
+    Returns:
+        [json] -- response to POST requests
+        [template] -- response to GET requests.
+
+    """
     if request.method == 'POST':
         question = request.json["question"]
         try:
