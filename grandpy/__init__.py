@@ -8,12 +8,17 @@ from flask import Flask
 G_API_KEY = os.environ.get("G_API_KEY")
 
 
-def create_app():
+def create_app(testing=None):
     """Is factory function."""
     app = Flask(__name__)
     app.config.from_mapping(
-        SECRET_KEY='dev'
+        SECRET_KEY=os.environ.get("SECRET_KEY")
     )
+
+    if testing is True:
+        app.config.from_mapping(
+            TESTING=True
+        )
 
     from . import index
     app.register_blueprint(index.bp)

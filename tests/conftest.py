@@ -11,9 +11,7 @@ from grandpy import create_app
 def app():
     """Create and configure a new app instance for each test."""
     # create the app with common test config
-    app = create_app({
-        'TESTING': True,
-    })
+    app = create_app(testing=True)
 
     yield app
 
