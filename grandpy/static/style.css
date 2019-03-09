@@ -51,7 +51,6 @@ header {
   margin-left: 10px;
   margin-right: 10px;
   min-height: 72vh;
-  overflow: auto;
 }
 
 .grandpy, .user, .wiki {

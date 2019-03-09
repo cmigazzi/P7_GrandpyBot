@@ -4,7 +4,7 @@ import re
 
 from .question_type import QuestionType
 from .words_base import PRONOUNS, W_WORDS, STOP_WORDS
-
+from .exceptions import ZeroResultException
 
 class QuestionAnalyzer():
     """Represent the analyze engine.
@@ -122,5 +122,8 @@ class QuestionAnalyzer():
 
         keywords = [w for w in target_keywords
                     if len(w) > 1 and w not in STOP_WORDS]
+
+        if keywords == []:
+            raise ZeroResultException
 
         return keywords

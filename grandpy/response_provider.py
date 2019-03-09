@@ -42,6 +42,8 @@ class ResponseProvider():
             self.not_geographic()
         elif self.exception == "Zero result":
             self.zero_result()
+        elif self.exception == "Not enough words":
+            self.not_enough_words()
         elif self.exception is None:
             self.welcome()
         return self.response
@@ -70,3 +72,8 @@ class ResponseProvider():
         """Select resposne when no result."""
         zero_result = random.choice(RESPONSES["zero_result"])
         self.response = zero_result
+
+    def not_enough_words(self):
+        """Select response when not enough words."""
+        not_enough = random.choice(RESPONSES["misunderstood"])
+        self.response = not_enough

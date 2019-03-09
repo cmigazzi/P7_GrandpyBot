@@ -8,7 +8,8 @@ from flask import Blueprint, render_template, request
 from .response_provider import ResponseProvider
 from .requests_manager import RequestsManager
 from .parser.exceptions import (InvalidQuestionException, NoSpacesException,
-                                NotGeographicException, ZeroResultException)
+                                NotGeographicException, ZeroResultException,
+                                NotEnoughWordsException)
 from .parser.validator import QuestionValidator
 
 
@@ -31,9 +32,11 @@ def index():
             qv.spaces()
             qv.interrogation_mark()
             qv.geographic()
+            qv.count_words()
             rm = RequestsManager(question)
         except (InvalidQuestionException, NoSpacesException,
-                NotGeographicException, ZeroResultException) as e:
+                NotGeographicException, ZeroResultException,
+                NotEnoughWordsException) as e:
             rp = ResponseProvider(e)
             message = rp.provider()
             response = {"is_valid": False,

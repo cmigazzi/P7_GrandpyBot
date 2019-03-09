@@ -2,14 +2,14 @@
 
 RESPONSES = {
     "welcome": [
-        "Bonjour cher visisteur, comment puis-je t'aider ?",
+        "Bonjour cher visiteur, comment puis-je t'aider ?",
         "Hello, que puis-je faire pour toi ?",
-        "Salut, je suis Grandpy ! Je suis le meilleur copain de Google."
+        "Salut, je suis Grandpy ! Je suis le meilleur copain de Google, je peux t'aider ?"
     ],
     "misunderstood": [
         "Je n'ai pas compris...",
         "Peux-tu reformuler ta phrase, je ne comprends pas",
-        "Je suis confu, je ne comprends pas"
+        "Je suis confus, je ne comprends pas"
     ],
     "interrogation_mark": [
         "Est-ce vraiment une question ?",
@@ -24,11 +24,11 @@ RESPONSES = {
     "not_geographic": [
         "Malheuresement je ne peux pas répondre.",
         "Je peux simplement répondre à des questions géographiques",
-        "Je ne sais pas"
+        "Je ne sais pas..."
     ],
     "zero_result": [
         "Malheuresement je ne connais pas cet endroit.",
-        "Hmmm, je sui confus, je ne sais pas",
-        "Toutes mes excuse, je ne connais pas ce lieu."
-    ],
+        "Hmmm, je sui confus, je ne sais pas...",
+        "Toutes mes excuses, je ne connais pas ce lieu."
+    ]
 }

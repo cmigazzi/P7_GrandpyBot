@@ -9,7 +9,7 @@ from grandpy.parser.exceptions import ZeroResultException
 
 def test_class_exist():
     """Test if class exist."""
-    rm = RequestsManager("Ou es tu ?")
+    rm = RequestsManager("Ou es le stade de france ?")
     assert rm
 
 
