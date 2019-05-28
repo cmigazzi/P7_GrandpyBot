@@ -4,7 +4,8 @@ RESPONSES = {
     "welcome": [
         "Bonjour cher visiteur, comment puis-je t'aider ?",
         "Hello, que puis-je faire pour toi ?",
-        "Salut, je suis Grandpy ! Je suis le meilleur copain de Google, je peux t'aider ?"
+        "Salut, je suis Grandpy ! Je suis le meilleur copain de Google, "
+        "je peux t'aider ?"
     ],
     "misunderstood": [
         "Je n'ai pas compris...",
